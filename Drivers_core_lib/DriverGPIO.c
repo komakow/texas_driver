@@ -393,12 +393,12 @@ err pinGPIOSet(uint32_t pin, GPIOSet_Type state)
   if(state == GPIO_SET)
   {
     data_reg = data_reg + GPYSET;
-    *data_reg = pinMask;  //set pin
+    *data_reg |= pinMask;  //set pin
   }
   else
   {
     data_reg = data_reg + GPYCLEAR;
-    *data_reg = pinMask;  //reset pin
+    *data_reg |= pinMask;  //reset pin
   }
 
   EDIS;

@@ -8,3 +8,5 @@ Drivers_core_lib/Debug/subdir_vars.mk
 Drivers_core_lib/Debug/makefile
 *.mk
 Drivers_core_lib/Debug/Walka_z_DRA_linkInfo.xml
+Drivers_core_lib/Debug/Texas_drivers.map
+Drivers_core_lib/Debug/Texas_drivers_linkInfo.xml
