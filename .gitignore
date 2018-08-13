@@ -1,0 +1,10 @@
+
+*.obj
+*.out
+Drivers_core_lib/Debug/Walka_z_DRA.map
+Drivers_core_lib/Debug/subdir_vars.mk
+*.opt
+*.d
+Drivers_core_lib/Debug/makefile
+*.mk
+Drivers_core_lib/Debug/Walka_z_DRA_linkInfo.xml
