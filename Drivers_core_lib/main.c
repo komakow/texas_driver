@@ -28,10 +28,9 @@ int main(void)
   pin1->invert = INV_InvertDisable;
   pin1->samplingPeriod = 0;
   pin1->samplingQualification = QSEL_SYNC;
-  pinGPIOCfg(pin1);
 
   pinGPIOCfg(pin1);
-  EALLOW;
+
   while (1)
   {
 
