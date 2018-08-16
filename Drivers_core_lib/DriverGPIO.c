@@ -405,6 +405,22 @@ err pinGPIOSet(uint32_t pin, GPIOSet_Type state)
   return ret;
 }
 
+err pinGPIOToogle(uint32_t pin)
+{
+  err ret = E_GPIO_OK;
+  uint32_t pinMask = 0;
+
+  EALLOW;
+  //address of data register
+  volatile uint32_t *data_reg;
+  data_reg = data_reg = (uint32_t *)GPIO_DATA_REG_F2877S + ((pin / 32) * GPY_DATA_OFFSET);
+  pinMask = 1UL << (pin % 32);
+  data_reg = data_reg + GPYTOGGLE;
+  *data_reg |= pinMask;
+
+  return ret;
+}
+
 uint32_t pinGPIORead(uint32_t pin)
 {
   uint32_t state;
@@ -448,3 +464,4 @@ err pinLOCKset(uint32_t pin, GPIOLock_Type lock)
   EDIS;
   return ret;
 }
+

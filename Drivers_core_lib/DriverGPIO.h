@@ -248,4 +248,14 @@ pinLOCKset(uint32_t pin, GPIOLock_Type lock);
  */
 uint32_t
 pinGPIORead(uint32_t pin);
+
+/**
+ * @brief Function used to toogle pin by Data register
+ *
+ * @param uint32_t pin - number of specific pin which state should be toogle
+ *
+ * return State of operation
+ */
+err
+pinGPIOToogle(uint32_t pin);
 #endif /* DRIVERGPIO_H_ */
