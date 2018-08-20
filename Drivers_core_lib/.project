@@ -26,7 +26,7 @@
 	</natures>
 	<linkedResources>
 		<link>
-			<name>F2837xS_PieVect.c</name>
+			<name>F2837xS_pievect.c</name>
 			<type>1</type>
 			<locationURI>copy_PARENT/common/source/F2837xS_PieVect.c</locationURI>
 		</link>

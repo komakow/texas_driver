@@ -285,6 +285,7 @@ struct PIE_VECT_TABLE {
 //
 
 extern volatile struct PIE_VECT_TABLE PieVectTable;
+void InitPieVectTable(void);
 
 #ifdef __cplusplus
 }
