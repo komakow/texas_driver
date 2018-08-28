@@ -16,6 +16,14 @@
 typedef int err_spi;
 
 /**
+ * @brief Numeric representation of SPI error. Multiple if necessary.
+ */
+#define E_SPI_OK                   0     //Operation successful
+#define E_SPI_INVALID_PARAM       -1     //Invalid parameters of config SPI
+#define E_SPI_NOT_INITIALIZE      -2     //SPI is not initialize
+
+
+/**
  * @brief Numeric representation of SPI
  */
 typedef enum
@@ -105,10 +113,10 @@ typedef struct
     SPI_PolarityType polarity;
 
     /*
-     *   WORD_1b,              //1-bit word
-     *   WORD_2b,              //2-bit word
-     *   WORD_3b,              //3-bit word
-      *  WORD_4b,              //...
+     * WORD_2b,             //2-bit word
+     * WORD_4b,             //4-bit word
+     * WORD_8b,             //8-bit word
+     * WORD_16b,           //16-bit word
      */
     SPI_WordType word_size;
 
@@ -117,9 +125,6 @@ typedef struct
      *   PHA_DELAY,          //SPICLK signal delayed by one half-cycle
      */
     SPI_PhaseType phase;
-
-    uint16_t *readbuff;     //Pointer to read circle buffer contains received data
-    uint16_t bufflength;    //length of circle read buffer
 
 }SPI_Cfg;
 
@@ -147,5 +152,35 @@ err_spi spiCfg(SPI_Cfg *config);
  */
 err_spi spiSend(SPIType spi, uint16_t *sendbuff, uint16_t length);
 
+/**
+ * @brief Function enable save read data to readbuff
+ *
+ * @param SPIType spi       - numerate representation of used SPI
+ * @uint16_t *readbuff      - Pointer to read circle buffer contains received data
+ * @uint16_t bufflength     - length of circle read buffer
+ *
+ * @return Status of operation
+ */
+err_spi spiReadEnable(SPIType spi, uint16_t *readbuff, uint16_t bufflength);
+
+/**
+ * @brief Function enable DMA interrupt after send data from sendbuff
+ */
+void spiIRQ_TCEnable();
+
+/**
+ * @brief Function enable DMA interrupt after read 'bufflength' data
+ */
+void spiIRQ_RCEnable();
+
+/**
+ * @brief Function disable DMA interrupt after send data from sendbuff
+ */
+void spiIRQ_TCDisable();
+
+/**
+ * @brief Function disable DMA interrupt after read 'bufflength' data
+ */
+void spiIRQ_RCdisable();
 
 #endif /* DRIVERSPI_H_ */
