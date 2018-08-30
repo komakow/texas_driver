@@ -30,9 +30,9 @@ typedef enum
 {
   SPI_MIN = -1,       //Not related to SPI, for debug purpose
 
-  SPI_1,              //SPI number one
-  SPI_2,
-  SPI_3,
+  SPI_A,              //SPI number one
+  SPI_B,
+  SPI_C,
   SPI_MAX            //Not related to SPI, for debug purpose
 
 }SPIType;
@@ -175,6 +175,16 @@ typedef struct
      */
     SPI_WordType word_size;
 
+
+    /*
+     * Needed only at Master mode
+     * 3 - LSPCLK/4
+     * 4 - LSPCLK/5
+     * ...
+     * 127 - LSPCLK/128
+     */
+    uint16_t baud_rate;
+
     /*
      *   PHA_NORMAL,         //Normal SPI clocking scheme, depending on the CLOCK POLARITY
      *   PHA_DELAY,          //SPICLK signal delayed by one half-cycle
@@ -233,12 +243,12 @@ err_spi spiSend(SPIType spi, uint16_t *sendbuff, uint16_t length);
 err_spi spiRead(SPIType spi);
 
 /**
- * @brief Function enable interrupt from
+ * @brief Function enable interrupt from FIFO TX
  */
 void spiIRQ_ReadEnable();
 
 /**
- * @brief Function disable DMA interrupt after read 'bufflength' data
+ * @brief Function disable interrupt from FIFO RX
  */
 void spiIRQ_ReadDisable();
 
